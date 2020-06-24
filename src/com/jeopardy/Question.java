@@ -1,8 +1,9 @@
 package com.jeopardy;
 
+import java.util.List;
 import java.util.Objects;
 
-public class Question {
+public abstract class Question {
 
     private boolean isDailyDouble = false;
     private boolean isTrueFalse = false;
@@ -88,6 +89,9 @@ public class Question {
     public void setDollarValue(int dollarValue) {
         this.dollarValue = dollarValue;
     }
+
+    public abstract void showAnswerChoices(List<String> answers);
+    public abstract boolean checkAnswer(int answer);
 
     @Override
     public String toString() {

@@ -89,10 +89,10 @@ public class Board {
         int dollarValue = Integer.parseInt(question[2]);
         if (question[3].equals("true") || question[3].equals("false")) {
           boolean answer = Boolean.parseBoolean(question[3]);
-          temp = new Question(category, body, dollarValue, answer);
+          temp = new TFQuestion(category, body, dollarValue, answer);
         } else {
           String answer = question[3];
-          temp = new Question(category, body, dollarValue, answer);
+          temp = new MCQuestion(category, body, dollarValue, answer);
         }
         if (session == category) {
           this.questions.add(temp);
@@ -175,6 +175,7 @@ public class Board {
     for (int i = 0; i < 50; i++) {
       System.out.println("\n");
     }
+
     System.out.println("\n" + "\u001B[44m \n \u001B[41m \u001B[30m" +
             "*$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*  F-I-N-A-L   S-C-O-R-E  *$*$*$*$*$*$*$*$*$*$*$*$*$*$*$*" +
             "\n\u001B[44m" + "\n\u001B[0m" );

@@ -3,6 +3,8 @@ package com.jeopardy.client;
 import com.jeopardy.Board;
 import com.jeopardy.BoardFactory;
 import com.jeopardy.Question;
+import com.jeopardy.MCQuestion;
+import com.jeopardy.TFQuestion;
 
 import java.util.*;
 
@@ -58,13 +60,16 @@ public class Jeopardy {
       currentQuestion.displayQuestion();
 
       // DONE: display answer choices
-      newGame.showAnswerChoices(currentQuestion);
+      //newGame.showAnswerChoices(currentQuestion);
+
+      currentQuestion.showAnswerChoices(newGame.getAnswers());
+
       // 1: correct answer 2: tricky answer 3: bs
       int answer = wait.nextInt();
 
       // DONE: process score for the player
       dollarValue = currentQuestion.isDailyDouble() ? dollarValue * 2 : dollarValue;
-      newGame.processScore(newGame.checkAnswer(answer), currentPlayer, dollarValue);
+      newGame.processScore(currentQuestion.checkAnswer(answer), currentPlayer, dollarValue);
 
 
       // DONE: display scores
