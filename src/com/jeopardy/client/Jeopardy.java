@@ -2,10 +2,10 @@ package com.jeopardy.client;
 
 import com.jeopardy.Board;
 import com.jeopardy.BoardFactory;
-import com.jeopardy.Player;
-import com.jeopardy.sample.Contestants;
+import com.jeopardy.Question;
+import com.jeopardy.MCQuestion;
+import com.jeopardy.TFQuestion;
 
-import java.io.*;
 import java.util.*;
 
 public class Jeopardy {
@@ -48,25 +48,35 @@ public class Jeopardy {
     Scanner wait = new Scanner(System.in);
     wait.nextLine();
 
-
-
-    boolean firstQuestion = true;
-
     while (newGame.getQuestions().size() > 0) {
-      String currentPlayer = newGame.getAPlayerName();
-      System.out.println("Our guest is: " + currentPlayer);
+      String currentPlayer = newGame.getPlayerName();
+      System.out.println("\n"+ "Our guest is: " + currentPlayer);
       System.out.println(currentPlayer + ", please choose a question.");
 
       System.out.println(newGame.getAllQuestion());
+      System.out.print("Choose a dollar value: $");
       int dollarValue = wait.nextInt();
-      newGame.getAQuestion(dollarValue).displayQuestion();
+      Question currentQuestion = newGame.getQuestion(dollarValue);
+      currentQuestion.displayQuestion();
 
-      // TODO: display answer choices
+      // DONE: display answer choices
+      //newGame.showAnswerChoices(currentQuestion);
+
+      currentQuestion.showAnswerChoices(newGame.getAnswers());
+
       // 1: correct answer 2: tricky answer 3: bs
       int answer = wait.nextInt();
 
-      // TODO: process score for the player
+      // DONE: process score for the player
+      dollarValue = currentQuestion.isDailyDouble() ? dollarValue * 2 : dollarValue;
+      newGame.processScore(currentQuestion.checkAnswer(answer), currentPlayer, dollarValue);
+
+
+      // DONE: display scores
+      newGame.displayScores();
     }
+    // DONE: display final score
+    newGame.displayFinalScores();
 
     // TODO: option to replay or exit
     System.out.println("Thank you for playing. See you next time!");

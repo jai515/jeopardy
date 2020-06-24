@@ -20,13 +20,13 @@ public class Questions {
     return results;
   }
 
-  static {
-    questions.add(new Question(1, "Java source files have a _________ extension", 200, ".java"));
-    questions.add(new Question(1, "The JVM provides an independent operating environment for " +
-            "Java programs", 200, true));
-    questions.add(new Question(1, "The _________ method is the entry point for all Java programs", 200, "main()"));
-    questions.add(new Question(1, "Java source files are compiled into ______ with _________", 400, "bytecode, javac"));
-    questions.add(new Question(1, "Java programs can not run unchanged in different environments " +
-            "and operating systems." , 200, false));
-  }
+//  static {
+//    questions.add(new Question(1, "Java source files have a _________ extension", 200, ".java"));
+//    questions.add(new Question(1, "The JVM provides an independent operating environment for " +
+//            "Java programs", 200, true));
+//    questions.add(new Question(1, "The _________ method is the entry point for all Java programs", 200, "main()"));
+//    questions.add(new Question(1, "Java source files are compiled into ______ with _________", 400, "bytecode, javac"));
+//    questions.add(new Question(1, "Java programs can not run unchanged in different environments " +
+//            "and operating systems." , 200, false));
+//  }
 }
